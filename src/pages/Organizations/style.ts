@@ -30,7 +30,7 @@ export const ItemContainer = styled(Button)`
   margin-bottom: 1px;
   padding-top: 12px;
   margin: 6px;
-  border: 1px solid black;
+  border: 1px solid ${(props) => props.theme.black};
 
   &:hover {
     box-shadow: none;

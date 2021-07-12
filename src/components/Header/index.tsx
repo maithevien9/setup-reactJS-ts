@@ -12,7 +12,7 @@ import {
 } from "./style";
 import { HOME_ROUTE, ORGANIZATION_ROUTE } from "../../constants/routes";
 
-const Header = () => {
+const Header: React.FunctionComponent = () => {
   return (
     <header>
       <HeaderWrapper>

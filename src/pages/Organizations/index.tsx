@@ -1,11 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { Spin } from "antd";
+import moment from "moment";
 import {
   faUserCircle,
   faUserFriends,
   faCalendarWeek,
 } from "@fortawesome/free-solid-svg-icons";
-
 import { Button } from "antd";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../store/combineReducers";
+
+import { getOrganization } from "../../store/organizations/action";
 import {
   OrganizationWrapper,
   OrganizationContainer,
@@ -26,44 +31,58 @@ import {
 } from "./style";
 
 const Organization: React.FunctionComponent = () => {
-  const a = [1, 2, 3, 4];
-  return (
-    <OrganizationWrapper>
-      <OrganizationContainer>
-        <TopContainer>
-          <Button>Create Organization</Button>
-        </TopContainer>
-        {a.map((organization, index) => (
-          <ItemContainer key={index}>
-            <Item>
-              <TopDetail>
-                <Title>Corize</Title>
-              </TopDetail>
+  const dispatch = useDispatch();
 
-              <BottomDetail>
-                <LeftBottom>
-                  <Owner>
-                    <CustomFontAwesomeIcon icon={faUserCircle} />
-                    <TextOwner>Owner: Vien Mai</TextOwner>
-                  </Owner>
-                  <Member>
-                    <CustomFontAwesomeIcon icon={faUserFriends} />
-                    <TextUsers>Users: 2</TextUsers>
-                  </Member>
-                </LeftBottom>
-                <RightBottom>
-                  <CustomFontAwesomeIcon icon={faCalendarWeek} />
-                  <CreateAtDate>
-                    {/* {moment(organization.createdAt).format("MMMM Do YYYY")} */}
-                    22/3/2012
-                  </CreateAtDate>
-                </RightBottom>
-              </BottomDetail>
-            </Item>
-          </ItemContainer>
-        ))}
-      </OrganizationContainer>
-    </OrganizationWrapper>
+  const { organizations, isFetching } = useSelector(
+    (state: RootState) => state.organizations,
+  );
+
+  useEffect(() => {
+    dispatch(getOrganization());
+  }, []);
+
+  return (
+    <Spin spinning={isFetching}>
+      <OrganizationWrapper>
+        <OrganizationContainer>
+          <TopContainer>
+            <Button>Create Organization</Button>
+          </TopContainer>
+          {organizations.map((organization: any, index) => (
+            <ItemContainer key={index}>
+              <Item>
+                <TopDetail>
+                  <Title>{organization.name}</Title>
+                </TopDetail>
+
+                <BottomDetail>
+                  <LeftBottom>
+                    <Owner>
+                      <CustomFontAwesomeIcon icon={faUserCircle} />
+                      <TextOwner>
+                        {`Owner: ${organization.owner.lastName} ${organization.owner.firstName}`}
+                      </TextOwner>
+                    </Owner>
+                    <Member>
+                      <CustomFontAwesomeIcon icon={faUserFriends} />
+                      <TextUsers>
+                        Users: {organization.members.length}
+                      </TextUsers>
+                    </Member>
+                  </LeftBottom>
+                  <RightBottom>
+                    <CustomFontAwesomeIcon icon={faCalendarWeek} />
+                    <CreateAtDate>
+                      {moment(organization.createdAt).format("MMMM Do YYYY")}
+                    </CreateAtDate>
+                  </RightBottom>
+                </BottomDetail>
+              </Item>
+            </ItemContainer>
+          ))}
+        </OrganizationContainer>
+      </OrganizationWrapper>
+    </Spin>
   );
 };
 
