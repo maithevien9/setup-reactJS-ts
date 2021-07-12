@@ -9,6 +9,7 @@ import {
 import { Button } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../store/combineReducers";
+import { AppDispatch } from "../../store/index";
 
 import { getOrganization } from "../../store/organizations/action";
 import {
@@ -31,7 +32,7 @@ import {
 } from "./style";
 
 const Organization: React.FunctionComponent = () => {
-  const dispatch = useDispatch();
+  const dispatch: AppDispatch = useDispatch();
 
   const { organizations, isFetching } = useSelector(
     (state: RootState) => state.organizations,
