@@ -1,12 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Image } from "antd";
 
 import {
   HeaderWrapper,
   HeaderContainer,
   LeftContainer,
-  ImageContainer,
   CustomUl,
   CustomLabel,
 } from "./style";
@@ -18,14 +16,6 @@ const Header: React.FunctionComponent = () => {
       <HeaderWrapper>
         <HeaderContainer>
           <LeftContainer>
-            <ImageContainer>
-              <Image
-                src="/images/settings.png"
-                alt="Logo in Header"
-                preview={false}
-              />
-            </ImageContainer>
-
             <CustomUl>
               <li>
                 <Link to={HOME_ROUTE}>

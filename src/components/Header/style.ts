@@ -10,6 +10,7 @@ export const HeaderWrapper = styled.div`
   position: sticky;
   top: 0;
   z-index: 5;
+  background-color: ${(props) => props.theme.palette.primary.main};
 `;
 
 export const HeaderContainer = styled.div`
@@ -66,6 +67,7 @@ export const CustomLabel = styled.label`
   font-size: 20px;
   font-weight: bold;
   margin-right: 20px;
+  color: ${(props) => props.theme.palette.common.white};
 
   &:hover {
   }

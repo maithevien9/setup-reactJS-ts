@@ -9,6 +9,7 @@ export const getOrganization = createAsyncThunk(
     try {
       return await getOrganizationApiRequest();
     } catch (e) {
+      console.log(e);
       openNotification(e.message);
       return rejectWithValue(e);
     }
