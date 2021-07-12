@@ -1,0 +1,42 @@
+{
+  "extends": [
+    "prettier"
+  ],
+  "plugins": [
+    "react",
+    "import",
+    "prettier"
+  ],
+  "parser": "babel-eslint",
+  "globals": {
+    "window": true,
+    "document": true,
+    "localStorage": true,
+    "FormData": true,
+    "FileReader": true,
+    "Blob": true,
+    "navigator": true
+  },
+  "rules": {
+    "semi": [
+      2,
+      "always"
+    ],
+    "quotes": [
+      2,
+      "double"
+    ],
+    "jsx-quotes": [
+      2,
+      "prefer-double"
+    ],
+    "import/imports-first": [
+      2,
+      "absolute-first"
+    ],
+    "no-unused-vars": 2,
+    "react/jsx-uses-react": 2,
+    "react/jsx-uses-vars": 2,
+    "no-console": 2
+  }
+}
