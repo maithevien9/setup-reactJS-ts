@@ -1,9 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { login } from "./actions";
+import { authState } from "../../constants/interface";
 
-const initialState = {
+const initialState: authState = {
   user: {},
-  token: null,
+  token: "",
   isSubmitting: false,
 };
 
@@ -13,16 +14,16 @@ const authSlice = createSlice({
   reducers: {},
 
   extraReducers: (builder) => {
-    builder.addCase(login.pending, (state: any): void => {
+    builder.addCase(login.pending, (state: authState): void => {
       state.isSubmitting = true;
     });
-    builder.addCase(login.fulfilled, (state: any, { payload }): void => {
+    builder.addCase(login.fulfilled, (state: authState, { payload }): void => {
       const { user, accessToken } = payload;
       state.user = user;
       state.token = accessToken;
       state.isSubmitting = false;
     });
-    builder.addCase(login.rejected, (state: any): void => {
+    builder.addCase(login.rejected, (state: authState): void => {
       state.isSubmitting = false;
     });
   },
