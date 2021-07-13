@@ -1,10 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { RootState } from "../combineReducers";
 import { login } from "./actions";
 
 interface User {
-  gender: number;
+  gender: 0 | 1 | 2;
   isOnline: boolean;
-  role: number;
+  role: 0 | 1;
   _id: string;
   firstName: string;
   lastName: string;
@@ -52,4 +53,5 @@ const authSlice = createSlice({
   },
 });
 
+export const authState = (state: RootState) => state.auth;
 export default authSlice.reducer;

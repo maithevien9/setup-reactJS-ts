@@ -3,9 +3,10 @@ import { Form, Input, Button } from "antd";
 import { unwrapResult } from "@reduxjs/toolkit";
 import { useHistory } from "react-router-dom";
 
-import { RootState } from "../../store/combineReducers";
 import { useAppDispatch, useAppSelector } from "../../store/index";
 import { login } from "../../store/auth/actions";
+import { authState } from "../../store/auth/slice";
+
 import {
   LoginContainer,
   TopContainer,
@@ -26,7 +27,7 @@ const Home: React.FunctionComponent = () => {
   const history = useHistory();
   const dispatch = useAppDispatch();
   type FormData = { email: string; password: string };
-  const { isSubmitting } = useAppSelector((state: RootState) => state.auth);
+  const { isSubmitting } = useAppSelector(authState);
 
   const handleLogin = (formData: FormData): void => {
     dispatch(login(formData))
