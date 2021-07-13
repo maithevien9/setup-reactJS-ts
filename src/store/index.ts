@@ -1,7 +1,7 @@
 import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
 import { persistReducer, persistStore } from "redux-persist";
-import { useDispatch } from "react-redux";
-import rootReducer from "./combineReducers";
+import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
+import rootReducer, { RootState } from "./combineReducers";
 // eslint-disable-next-line import/imports-first
 import storage from "redux-persist/lib/storage";
 
@@ -24,4 +24,6 @@ export const store = configureStore({
 export type AppDispatch = typeof store.dispatch;
 
 export const useAppDispatch = () => useDispatch<AppDispatch>();
+export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
+
 export const persistor = persistStore(store);

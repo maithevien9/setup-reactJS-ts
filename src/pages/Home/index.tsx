@@ -1,11 +1,10 @@
 import React from "react";
 import { Form, Input, Button } from "antd";
-import { useDispatch, useSelector } from "react-redux";
 import { unwrapResult } from "@reduxjs/toolkit";
 import { useHistory } from "react-router-dom";
 
 import { RootState } from "../../store/combineReducers";
-import { AppDispatch } from "../../store/index";
+import { useAppDispatch, useAppSelector } from "../../store/index";
 import { login } from "../../store/auth/actions";
 import {
   LoginContainer,
@@ -24,12 +23,12 @@ import {
 import { ORGANIZATION_ROUTE } from "../../constants/routes";
 
 const Home: React.FunctionComponent = () => {
-  const dispatch: AppDispatch = useDispatch();
   const history = useHistory();
+  const dispatch = useAppDispatch();
+  type FormData = { email: string; password: string };
+  const { isSubmitting } = useAppSelector((state: RootState) => state.auth);
 
-  const { isSubmitting } = useSelector((state: RootState) => state.auth);
-
-  const handleLogin = (formData: { email: string; password: string }): void => {
+  const handleLogin = (formData: FormData): void => {
     dispatch(login(formData))
       .then(unwrapResult)
       .then(() => {
