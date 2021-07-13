@@ -29,7 +29,7 @@ const Home: React.FunctionComponent = () => {
 
   const { isSubmitting } = useSelector((state: RootState) => state.auth);
 
-  const handleLogin = (formData: object): void => {
+  const handleLogin = (formData: { email: string; password: string }): void => {
     dispatch(login(formData))
       .then(unwrapResult)
       .then(() => {
