@@ -1,22 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../combineReducers";
 import { login } from "./actions";
-
-interface User {
-  gender: 0 | 1 | 2;
-  isOnline: boolean;
-  role: 0 | 1;
-  _id: string;
-  firstName: string;
-  lastName: string;
-  avatar: string;
-}
-
-interface AuthState {
-  user: User;
-  token: string;
-  isSubmitting: boolean;
-}
+import { AuthState } from "./types";
 
 const initialState: AuthState = {
   user: {
