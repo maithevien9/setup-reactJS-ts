@@ -1,4 +1,4 @@
-interface User {
+interface IUser {
   gender: 0 | 1 | 2;
   isOnline: boolean;
   role: 0 | 1;
@@ -8,8 +8,8 @@ interface User {
   avatar: string;
 }
 
-export interface AuthState {
-  user: User;
+export interface IAuthState {
+  user: IUser;
   token: string;
   isSubmitting: boolean;
 }

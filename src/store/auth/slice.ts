@@ -1,9 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../combineReducers";
 import { login } from "./actions";
-import { AuthState } from "./types";
+import { IAuthState } from "./types";
 
-const initialState: AuthState = {
+const initialState: IAuthState = {
   user: {
     gender: 0,
     isOnline: false,
@@ -23,16 +23,16 @@ const authSlice = createSlice({
   reducers: {},
 
   extraReducers: (builder) => {
-    builder.addCase(login.pending, (state: AuthState): void => {
+    builder.addCase(login.pending, (state: IAuthState): void => {
       state.isSubmitting = true;
     });
-    builder.addCase(login.fulfilled, (state: AuthState, { payload }): void => {
+    builder.addCase(login.fulfilled, (state: IAuthState, { payload }): void => {
       const { user, accessToken } = payload;
       state.user = user;
       state.token = accessToken;
       state.isSubmitting = false;
     });
-    builder.addCase(login.rejected, (state: AuthState): void => {
+    builder.addCase(login.rejected, (state: IAuthState): void => {
       state.isSubmitting = false;
     });
   },

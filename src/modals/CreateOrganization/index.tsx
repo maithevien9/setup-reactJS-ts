@@ -10,12 +10,12 @@ import {
   CustomButton,
 } from "./style";
 
-interface CreateOrganizationProps {
+interface ICreateOrganizationProps {
   isOpen: boolean;
   handleCancel: () => void;
 }
 
-const CreateOrganization = (props: CreateOrganizationProps) => {
+const CreateOrganization = (props: ICreateOrganizationProps) => {
   const { isOpen, handleCancel } = props;
   const onFinish = () => {};
 
