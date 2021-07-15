@@ -23,16 +23,16 @@ const authSlice = createSlice({
   reducers: {},
 
   extraReducers: (builder) => {
-    builder.addCase(login.pending, (state: IAuthState): void => {
+    builder.addCase(login.pending, (state) => {
       state.isSubmitting = true;
     });
-    builder.addCase(login.fulfilled, (state: IAuthState, { payload }): void => {
+    builder.addCase(login.fulfilled, (state, { payload }) => {
       const { user, accessToken } = payload;
       state.user = user;
       state.token = accessToken;
       state.isSubmitting = false;
     });
-    builder.addCase(login.rejected, (state: IAuthState): void => {
+    builder.addCase(login.rejected, (state) => {
       state.isSubmitting = false;
     });
   },

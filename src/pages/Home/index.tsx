@@ -22,14 +22,14 @@ import {
 } from "./style";
 
 import { ORGANIZATION_ROUTE } from "../../constants/routes";
-import { FormDataLogin } from "../../models/index";
+import { ILoginRequestPayload } from "../../store/auth/types";
 
 const Home: React.FunctionComponent = () => {
   const history = useHistory();
   const dispatch = useAppDispatch();
   const { isSubmitting } = useAppSelector(authState);
 
-  const handleLogin = (formData: FormDataLogin): void => {
+  const handleLogin = (formData: ILoginRequestPayload): void => {
     dispatch(login(formData))
       .then(unwrapResult)
       .then(() => {

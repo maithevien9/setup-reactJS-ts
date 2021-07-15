@@ -13,3 +13,14 @@ export interface IAuthState {
   token: string;
   isSubmitting: boolean;
 }
+
+export interface ILoginResponsePayload {
+  user: IUser;
+  accessToken: string;
+  refreshToken: string;
+}
+
+export interface ILoginRequestPayload {
+  email: string;
+  password: string;
+}
