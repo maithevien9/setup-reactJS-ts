@@ -69,7 +69,7 @@
     }
   },
   "lint-staged": {
-    "*.{js, jsx, ts, tsx}": [
+    "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
       "eslint --fix",
       "pretty-quick --staged"
     ]
