@@ -43,11 +43,7 @@ const Home: React.FunctionComponent = () => {
         <TopContainer>
           <Title>Login</Title>
         </TopContainer>
-        <Form
-          name="basic"
-          initialValues={{ remember: true }}
-          onFinish={handleLogin}
-        >
+        <Form name="basic" initialValues={{ remember: true }} onFinish={handleLogin}>
           <CustomLabel htmlFor="email">Email</CustomLabel>
           <CustomFormItem
             name="email"
