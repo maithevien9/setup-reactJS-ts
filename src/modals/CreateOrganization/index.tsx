@@ -1,14 +1,7 @@
 import React from "react";
 import { Form, Input } from "antd";
 
-import {
-  CreateOrganizationWrapper,
-  Container,
-  CustomLabel,
-  CustomFormItem,
-  ButtonContainer,
-  CustomButton,
-} from "./style";
+import { CreateOrganizationWrapper, Container, CustomLabel, CustomFormItem, ButtonContainer, CustomButton } from "./style";
 
 interface ICreateOrganizationProps {
   isOpen: boolean;
@@ -20,18 +13,9 @@ const CreateOrganization = (props: ICreateOrganizationProps) => {
   const onFinish = () => {};
 
   return (
-    <CreateOrganizationWrapper
-      visible={isOpen}
-      onCancel={handleCancel}
-      footer={null}
-      closable={false}
-    >
+    <CreateOrganizationWrapper visible={isOpen} onCancel={handleCancel} footer={null} closable={false}>
       <Container>
-        <Form
-          name="basic"
-          initialValues={{ remember: true }}
-          onFinish={onFinish}
-        >
+        <Form name="basic" initialValues={{ remember: true }} onFinish={onFinish}>
           <CustomLabel htmlFor="name">Name Organization</CustomLabel>
           <CustomFormItem
             name="name"
