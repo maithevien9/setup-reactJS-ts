@@ -31,6 +31,7 @@ const CreateOrganization = (props: ICreateOrganizationProps) => {
           <CustomFormItem>
             <ButtonContainer>
               <CustomButton onClick={handleCancel}>Cancel</CustomButton>
+              <CustomButton onClick={handleCancel}>Cancel</CustomButton>
               <CustomButton type="primary" htmlType="submit">
                 Create
               </CustomButton>
