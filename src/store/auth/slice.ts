@@ -38,5 +38,5 @@ const authSlice = createSlice({
   },
 });
 
-export const a = (state: RootState) => state.auth;
+export const authState = (state: RootState) => state.auth;
 export default authSlice.reducer;
